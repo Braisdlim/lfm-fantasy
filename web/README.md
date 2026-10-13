@@ -14,4 +14,4 @@ npm run demo:smoke
 
 On Windows `build:local` avoids Vercel packaging symlink limitations. The normal production build is checked on Linux in CI. The demo smoke script requires Chromium and a running Compose demo and writes screenshots to `docs/screenshots/` when `CAPTURE_SCREENSHOTS=1`.
 
-Routes: `/`, `/plantilla`, `/mercado`, `/jornada`, `/liga`, `/liga/[teamId]`, `/jugador/[id]`, `/buscar`, `/comparar`, `/planificar`, `/seguimiento`, `/diario`. The web never calls the game API. Demo mutations are rejected at the server boundary, and a private production deployment needs `APP_PASSWORD`.
+Routes: `/`, `/plantilla`, `/mercado`, `/jornada`, `/liga`, `/liga/[teamId]`, `/jugador/[id]`, `/buscar`, `/comparar`, `/planificar`, `/seguimiento`, `/diario`. The web never calls the game API. Demo mutations are rejected at the server boundary, and a private production deployment needs `APP_PASSWORD` and an independent `AUTH_SECRET`; see [deployment](../docs/deployment.md). `npm run auth:smoke` verifies the login/redirect/cookie boundary against a temporary local server without a database.

@@ -4,7 +4,7 @@ Do not include credentials or private database dumps in a public issue. Use [Git
 
 Security fixes target the current `main` branch; older snapshots are not maintained separately. This personal project has no guaranteed response-time SLA. CI runs CodeQL and a redacted secret scan; GitHub dependency alerts and secret push protection provide additional checks. Passing these checks does not establish the absence of vulnerabilities.
 
-This application currently protects a single private workspace with one password; it is not a hardened multi-tenant identity system. The production hook refuses an unset password. Keep live deployments private, use HTTPS, strong credentials, restricted database roles and a provider secret store.
+This application currently protects a single private workspace with one password; it is not a hardened multi-tenant identity system. The production hook refuses an unset password or missing/invalid `AUTH_SECRET`. Cookies carry a random nonce and a 30-day expiry, signed with that independent secret; the server verifies both signature and expiry. Rotate the signing key when changing the password to revoke all sessions. There is no individual session revocation or distributed login rate limiter; use platform access/rate controls for an Internet-facing deployment. Keep live deployments private, use HTTPS, strong credentials, restricted database roles and a provider secret store.
 
 Demo mode requires the dedicated `lfm_demo` database/role and rejects write HTTP methods. Its Compose ports bind to loopback. Do not repurpose the public demo as a production database deployment.
 

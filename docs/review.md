@@ -24,6 +24,7 @@ LFM is a personal tool for deciding which fantasy football players to buy, what 
 | Failed analysis does not discard a newly collected market | [Light job](../src/lfm/jobs/light.py) | [Orchestration tests](../tests/test_light.py): failures recorded while collection and other analysis survive |
 | Concurrent identical page reads share work | [Query cache](../web/src/lib/server/query-cache.ts) | [Web tests](../web/tests/query-cache.test.ts): coalescing, expiry, retry and stale-response invalidation |
 | The public demo has an explicit data boundary | [Seed](../src/lfm/demo.py), [request hook](../web/src/hooks.server.ts) | [Python policy](../tests/test_demo.py), [web policy](../web/tests/demo-policy.test.ts), [browser smoke](../web/scripts/demo-smoke.mjs) |
+| Private sessions require an independent signing key and server-side expiry | [Session policy](../web/src/lib/server/auth.ts) | [Tampering/expiry tests](../web/tests/auth.test.ts), [HTTP login smoke](../web/scripts/auth-smoke.mjs) |
 
 For a small first check, run `uv sync --locked` then `uv run pytest -q tests/test_eleven.py tests/test_fixtures_points.py`. These tests do not need a database or sports credentials. PostgreSQL tests require a separate disposable test database; see [setup](setup.md#tests).
 
