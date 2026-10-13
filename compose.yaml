@@ -1,0 +1,42 @@
+# Local demo with a real public sports snapshot and an example league.
+# These credentials are disposable and are not production secrets.
+services:
+  database:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: lfm_demo
+      POSTGRES_PASSWORD: lfm_demo
+      POSTGRES_DB: lfm_demo
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - demo_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lfm_demo -d lfm_demo"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  seed:
+    build:
+      context: .
+      dockerfile: docker/seed.Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://lfm_demo:lfm_demo@database:5432/lfm_demo
+    depends_on:
+      database:
+        condition: service_healthy
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    environment:
+      DATABASE_URL: postgresql://lfm_demo:lfm_demo@database:5432/lfm_demo
+      DATABASE_TRANSPORT: postgres
+      DEMO_MODE: "true"
+    ports:
+      - "127.0.0.1:5173:5173"
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+volumes:
+  demo_data:

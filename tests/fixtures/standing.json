@@ -1,0 +1,101 @@
+[
+  {
+    "position": 1,
+    "previousPosition": 1,
+    "points": 238,
+    "team": {
+      "managerWarned": false,
+      "id": "90000006",
+      "managerId": 90000002,
+      "banned": false,
+      "teamValue": 304978509,
+      "teamPoints": 238,
+      "manager": {
+        "id": "90000002",
+        "managerName": "Manager 002",
+        "avatar": "https://assets.example.invalid/1/image.png"
+      },
+      "teamMoney": null,
+      "isAdmin": false
+    }
+  },
+  {
+    "position": 2,
+    "previousPosition": 4,
+    "points": 178,
+    "team": {
+      "managerWarned": false,
+      "id": "90000007",
+      "managerId": 90000009,
+      "banned": false,
+      "teamValue": 298446392,
+      "teamPoints": 178,
+      "manager": {
+        "id": "90000009",
+        "managerName": "Manager 004",
+        "avatar": "https://assets.example.invalid/1/image.png"
+      },
+      "isAdmin": false
+    }
+  },
+  {
+    "position": 3,
+    "previousPosition": 3,
+    "points": 173,
+    "team": {
+      "managerWarned": false,
+      "id": "90000005",
+      "managerId": 90000010,
+      "banned": false,
+      "teamValue": 267893946,
+      "teamPoints": 173,
+      "manager": {
+        "id": "90000010",
+        "managerName": "Manager 006",
+        "avatar": "https://assets.example.invalid/1/image.png"
+      },
+      "teamMoney": null,
+      "isAdmin": false
+    }
+  },
+  {
+    "position": 4,
+    "previousPosition": 2,
+    "points": 171,
+    "team": {
+      "managerWarned": false,
+      "id": "90000008",
+      "managerId": 90000003,
+      "banned": false,
+      "teamValue": 202028490,
+      "teamPoints": 171,
+      "manager": {
+        "id": "90000003",
+        "managerName": "Manager 008",
+        "avatar": "https://assets.example.invalid/1/image.png"
+      },
+      "teamMoney": null,
+      "isAdmin": false
+    }
+  },
+  {
+    "position": 5,
+    "previousPosition": 5,
+    "points": 149,
+    "team": {
+      "managerWarned": false,
+      "id": "90000004",
+      "managerId": 90000011,
+      "banned": false,
+      "teamValue": 206387420,
+      "teamPoints": 149,
+      "manager": {
+        "id": "90000011",
+        "managerName": "Manager 010",
+        "avatar": "https://assets.example.invalid/1/image.png"
+      },
+      "teamMoney": null,
+      "isAdmin": true
+    }
+  }
+]

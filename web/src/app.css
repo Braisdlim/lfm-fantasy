@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Paleta del diseño: algo más oscura y fría que la primera, y con el filete mucho más
+	   discreto (#1c2530 en vez de #243040) porque el diseño separa con líneas, no con cajas. */
+	--color-bg: #0a0d12;
+	--color-surface: #101620;
+	--color-surface-2: #18202b;
+	--color-line: #1c2530;
+	--color-fg: #eaf0f6;
+	--color-muted: #94a0ae;
+	--color-up: #22c55e;
+	--color-down: #f43f5e;
+	--color-warn: #f59e0b;
+	--color-accent: #38bdf8;
+	--font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+html {
+	color-scheme: dark;
+	background: var(--color-bg);
+}
+
+body {
+	min-height: 100dvh;
+	padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+	-webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 4px;
+}
+
+::selection { background: var(--color-accent); color: var(--color-bg); }
+input, textarea { caret-color: var(--color-accent); }
+a { text-underline-offset: .2em; }
+html { scrollbar-color: var(--color-surface-2) var(--color-bg); }
+button, summary { touch-action: manipulation; }
+button:not(:disabled), summary { cursor: pointer; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 100; transform: translateY(-200%); padding: .75rem 1rem; background: var(--color-fg); color: var(--color-bg); border-radius: .5rem; }
+.skip-link:focus { transform: none; }
+
+/* Las cifras, en la mono del diseño: alineadas en columna y sin que un 1 mida menos que un 8. */
+.num {
+	font-family: var(--font-mono);
+	font-variant-numeric: tabular-nums;
+	letter-spacing: -0.02em;
+}
+
+.card {
+	@apply bg-surface rounded-2xl border border-line;
+}
+
+.chip {
+	@apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+}
+
+/* Transiciones suaves estilo app nativa entre pantallas (View Transitions API) */
+@keyframes view-fade-in {
+	from { opacity: 0; transform: translateY(2px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes view-fade-out {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+::view-transition-old(root) {
+	animation: 80ms cubic-bezier(0.4, 0, 1, 1) both view-fade-out;
+}
+
+::view-transition-new(root) {
+	animation: 120ms cubic-bezier(0, 0, 0.2, 1) both view-fade-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+	::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}

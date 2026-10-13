@@ -1,0 +1,628 @@
+[
+  {
+    "id": "68",
+    "positionId": "1",
+    "nickname": "J001",
+    "lastSeasonPoints": "211",
+    "playerStatus": "ok",
+    "marketValue": "46821313",
+    "points": 34,
+    "averagePoints": 8.5,
+    "weekPoints": [
+      {
+        "weekNumber": 2,
+        "points": 1
+      },
+      {
+        "weekNumber": 1,
+        "points": 10
+      },
+      {
+        "weekNumber": 3,
+        "points": 10
+      },
+      {
+        "weekNumber": 4,
+        "points": 13
+      }
+    ],
+    "image": "https://assets.example.invalid/1/image.png",
+    "teamId": "3"
+  },
+  {
+    "id": "2351",
+    "positionId": "1",
+    "nickname": "J002",
+    "lastSeasonPoints": "102",
+    "playerStatus": "out_of_league",
+    "marketValue": "4015501",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/2/image.png",
+    "teamId": "7"
+  },
+  {
+    "id": "2468",
+    "positionId": "1",
+    "nickname": "J003",
+    "lastSeasonPoints": "0",
+    "playerStatus": "injured",
+    "marketValue": "1652047",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/3/image.png",
+    "teamId": "5"
+  },
+  {
+    "id": "2610",
+    "positionId": "1",
+    "nickname": "J004",
+    "lastSeasonPoints": "61",
+    "playerStatus": "out_of_league",
+    "marketValue": "2634421",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/4/image.png",
+    "teamId": "5"
+  },
+  {
+    "id": "2809",
+    "positionId": "1",
+    "nickname": "J005",
+    "lastSeasonPoints": "0",
+    "playerStatus": "out_of_league",
+    "marketValue": "702606",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/5/image.png",
+    "teamId": "3"
+  },
+  {
+    "id": "3018",
+    "positionId": "1",
+    "nickname": "J006",
+    "playerStatus": "doubtful",
+    "marketValue": "1591412",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 0
+      },
+      {
+        "weekNumber": 2,
+        "points": 0
+      },
+      {
+        "weekNumber": 3,
+        "points": 0
+      },
+      {
+        "weekNumber": 4,
+        "points": 0
+      }
+    ],
+    "image": "https://assets.example.invalid/6/image.png",
+    "teamId": "49"
+  },
+  {
+    "id": "3233",
+    "positionId": "1",
+    "nickname": "J007",
+    "playerStatus": "out_of_league",
+    "marketValue": "700000",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [
+      {
+        "weekNumber": 3,
+        "points": 0
+      },
+      {
+        "weekNumber": 4,
+        "points": 0
+      }
+    ],
+    "image": "https://assets.example.invalid/7/image.png",
+    "teamId": "5"
+  },
+  {
+    "id": "67",
+    "positionId": "2",
+    "nickname": "J008",
+    "lastSeasonPoints": "154",
+    "playerStatus": "ok",
+    "marketValue": "42910163",
+    "points": 20,
+    "averagePoints": 5,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 3
+      },
+      {
+        "weekNumber": 2,
+        "points": 2
+      },
+      {
+        "weekNumber": 3,
+        "points": 12
+      },
+      {
+        "weekNumber": 4,
+        "points": 3
+      }
+    ],
+    "image": "https://assets.example.invalid/8/image.png",
+    "teamId": "2"
+  },
+  {
+    "id": "673",
+    "positionId": "2",
+    "nickname": "J009",
+    "lastSeasonPoints": "181",
+    "playerStatus": "out_of_league",
+    "marketValue": "8021003",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/9/image.png",
+    "teamId": "9"
+  },
+  {
+    "id": "2146",
+    "positionId": "2",
+    "nickname": "J010",
+    "lastSeasonPoints": "109",
+    "playerStatus": "injured",
+    "marketValue": "2351977",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/10/image.png",
+    "teamId": "15"
+  },
+  {
+    "id": "2178",
+    "positionId": "2",
+    "nickname": "J011",
+    "lastSeasonPoints": "43",
+    "playerStatus": "suspended",
+    "marketValue": "483787",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/11/image.png",
+    "teamId": "21"
+  },
+  {
+    "id": "2354",
+    "positionId": "2",
+    "nickname": "J012",
+    "lastSeasonPoints": "201",
+    "playerStatus": "doubtful",
+    "marketValue": "52686400",
+    "points": 21,
+    "averagePoints": 5.25,
+    "weekPoints": [
+      {
+        "weekNumber": 2,
+        "points": 11
+      },
+      {
+        "weekNumber": 1,
+        "points": 8
+      },
+      {
+        "weekNumber": 3,
+        "points": 0
+      },
+      {
+        "weekNumber": 4,
+        "points": 2
+      }
+    ],
+    "image": "https://assets.example.invalid/12/image.png",
+    "teamId": "4"
+  },
+  {
+    "id": "2398",
+    "positionId": "2",
+    "nickname": "J013",
+    "lastSeasonPoints": "121",
+    "playerStatus": "injured",
+    "marketValue": "1425778",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/13/image.png",
+    "teamId": "12"
+  },
+  {
+    "id": "2531",
+    "positionId": "2",
+    "nickname": "J014",
+    "lastSeasonPoints": "91",
+    "playerStatus": "ok",
+    "marketValue": "22327057",
+    "points": 19,
+    "averagePoints": 4.75,
+    "weekPoints": [
+      {
+        "weekNumber": 2,
+        "points": 2
+      },
+      {
+        "weekNumber": 1,
+        "points": 0
+      },
+      {
+        "weekNumber": 3,
+        "points": 15
+      },
+      {
+        "weekNumber": 4,
+        "points": 2
+      }
+    ],
+    "image": "https://assets.example.invalid/14/image.png",
+    "teamId": "15"
+  },
+  {
+    "id": "2648",
+    "positionId": "2",
+    "nickname": "J015",
+    "lastSeasonPoints": "3",
+    "playerStatus": "out_of_league",
+    "marketValue": "602319",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/15/image.png",
+    "teamId": "4"
+  },
+  {
+    "id": "2776",
+    "positionId": "2",
+    "nickname": "J016",
+    "lastSeasonPoints": "83",
+    "playerStatus": "injured",
+    "marketValue": "5065403",
+    "points": 4,
+    "averagePoints": 2,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 2
+      },
+      {
+        "weekNumber": 2,
+        "points": 2
+      }
+    ],
+    "image": "https://assets.example.invalid/16/image.png",
+    "teamId": "9"
+  },
+  {
+    "id": "2874",
+    "positionId": "2",
+    "nickname": "J017",
+    "lastSeasonPoints": "0",
+    "playerStatus": "out_of_league",
+    "marketValue": "702622",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/17/image.png",
+    "teamId": "15"
+  },
+  {
+    "id": "2976",
+    "positionId": "2",
+    "nickname": "J018",
+    "playerStatus": "ok",
+    "marketValue": "5229144",
+    "points": 10,
+    "averagePoints": 3.3333333333333335,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 8
+      },
+      {
+        "weekNumber": 2,
+        "points": 2
+      },
+      {
+        "weekNumber": 3,
+        "points": 0
+      }
+    ],
+    "image": "https://assets.example.invalid/18/image.png",
+    "teamId": "26"
+  },
+  {
+    "id": "92",
+    "positionId": "3",
+    "nickname": "J019",
+    "lastSeasonPoints": "45",
+    "playerStatus": "out_of_league",
+    "marketValue": "1566041",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/19/image.png",
+    "teamId": "3"
+  },
+  {
+    "id": "270",
+    "positionId": "3",
+    "nickname": "J020",
+    "lastSeasonPoints": "64",
+    "playerStatus": "ok",
+    "marketValue": "685378",
+    "points": 1,
+    "averagePoints": 0.25,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 1
+      },
+      {
+        "weekNumber": 2,
+        "points": 0
+      },
+      {
+        "weekNumber": 3,
+        "points": 0
+      },
+      {
+        "weekNumber": 4,
+        "points": 0
+      }
+    ],
+    "image": "https://assets.example.invalid/20/image.png",
+    "teamId": "21"
+  },
+  {
+    "id": "581",
+    "positionId": "3",
+    "nickname": "J021",
+    "lastSeasonPoints": "191",
+    "playerStatus": "doubtful",
+    "marketValue": "6790930",
+    "points": 5,
+    "averagePoints": 2.5,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 3
+      },
+      {
+        "weekNumber": 3,
+        "points": 2
+      }
+    ],
+    "image": "https://assets.example.invalid/21/image.png",
+    "teamId": "18"
+  },
+  {
+    "id": "680",
+    "positionId": "3",
+    "nickname": "J022",
+    "lastSeasonPoints": "104",
+    "playerStatus": "injured",
+    "marketValue": "3705101",
+    "points": 26,
+    "averagePoints": 6.5,
+    "weekPoints": [
+      {
+        "weekNumber": 2,
+        "points": 8
+      },
+      {
+        "weekNumber": 1,
+        "points": 2
+      },
+      {
+        "weekNumber": 3,
+        "points": 8
+      },
+      {
+        "weekNumber": 4,
+        "points": 8
+      }
+    ],
+    "image": "https://assets.example.invalid/22/image.png",
+    "teamId": "13"
+  },
+  {
+    "id": "2465",
+    "positionId": "3",
+    "nickname": "J023",
+    "lastSeasonPoints": "98",
+    "playerStatus": "suspended",
+    "marketValue": "553567",
+    "points": 1,
+    "averagePoints": 0.25,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 0
+      },
+      {
+        "weekNumber": 2,
+        "points": 2
+      },
+      {
+        "weekNumber": 3,
+        "points": 1
+      },
+      {
+        "weekNumber": 4,
+        "points": -2
+      }
+    ],
+    "image": "https://assets.example.invalid/23/image.png",
+    "teamId": "14"
+  },
+  {
+    "id": "91",
+    "positionId": "4",
+    "nickname": "J024",
+    "lastSeasonPoints": "132",
+    "playerStatus": "ok",
+    "marketValue": "28317259",
+    "points": 26,
+    "averagePoints": 6.5,
+    "weekPoints": [
+      {
+        "weekNumber": 2,
+        "points": 4
+      },
+      {
+        "weekNumber": 1,
+        "points": 2
+      },
+      {
+        "weekNumber": 3,
+        "points": 10
+      },
+      {
+        "weekNumber": 4,
+        "points": 10
+      }
+    ],
+    "image": "https://assets.example.invalid/24/image.png",
+    "teamId": "3"
+  },
+  {
+    "id": "886",
+    "positionId": "4",
+    "nickname": "J025",
+    "lastSeasonPoints": "197",
+    "playerStatus": "suspended",
+    "marketValue": "33203028",
+    "points": 11,
+    "averagePoints": 2.75,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 3
+      },
+      {
+        "weekNumber": 2,
+        "points": 9
+      },
+      {
+        "weekNumber": 3,
+        "points": 0
+      },
+      {
+        "weekNumber": 4,
+        "points": -1
+      }
+    ],
+    "image": "https://assets.example.invalid/25/image.png",
+    "teamId": "14"
+  },
+  {
+    "id": "1260",
+    "positionId": "4",
+    "nickname": "J026",
+    "lastSeasonPoints": "121",
+    "playerStatus": "injured",
+    "marketValue": "1068672",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/26/image.png",
+    "teamId": "18"
+  },
+  {
+    "id": "2359",
+    "positionId": "4",
+    "nickname": "J027",
+    "lastSeasonPoints": "208",
+    "playerStatus": "out_of_league",
+    "marketValue": "53492240",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/27/image.png",
+    "teamId": "4"
+  },
+  {
+    "id": "3078",
+    "positionId": "4",
+    "nickname": "J028",
+    "playerStatus": "doubtful",
+    "marketValue": "21473001",
+    "points": 13,
+    "averagePoints": 4.333333333333333,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 8
+      },
+      {
+        "weekNumber": 2,
+        "points": 4
+      },
+      {
+        "weekNumber": 3,
+        "points": 1
+      }
+    ],
+    "image": "https://assets.example.invalid/28/image.png",
+    "teamId": "21"
+  },
+  {
+    "id": "1356",
+    "positionId": "5",
+    "nickname": "J029",
+    "lastSeasonPoints": "122",
+    "playerStatus": "out_of_league",
+    "marketValue": "8030121",
+    "points": 0,
+    "averagePoints": 0,
+    "weekPoints": [],
+    "image": "https://assets.example.invalid/29/image.png",
+    "teamId": "20"
+  },
+  {
+    "id": "1611",
+    "positionId": "5",
+    "nickname": "J030",
+    "lastSeasonPoints": "82",
+    "playerStatus": "ok",
+    "marketValue": "16836364",
+    "points": 7,
+    "averagePoints": 1.75,
+    "weekPoints": [
+      {
+        "weekNumber": 1,
+        "points": 0
+      },
+      {
+        "weekNumber": 2,
+        "points": 5
+      },
+      {
+        "weekNumber": 3,
+        "points": 0
+      },
+      {
+        "weekNumber": 4,
+        "points": 2
+      }
+    ],
+    "image": "https://assets.example.invalid/30/image.png",
+    "teamId": "9"
+  }
+]

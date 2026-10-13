@@ -1,0 +1,44 @@
+name: private-collector-example
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        type: choice
+        options: [light, daily]
+        default: light
+      skip_if_recent:
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: lfm-collect
+  cancel-in-progress: false
+jobs:
+  collect:
+    if: github.event.repository.private && vars.ENABLE_COLLECTION == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      LALIGA_REFRESH_TOKEN: ${{ secrets.LALIGA_REFRESH_TOKEN }}
+      LEAGUE_ID: ${{ secrets.LEAGUE_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      APP_URL: ${{ vars.APP_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv sync --frozen --no-dev
+      - name: Verify provider budget
+        id: budget
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: uv run python -m lfm.jobs.neon_budget
+      - name: Collect light
+        if: steps.budget.outputs.collect == 'true' && inputs.job == 'light'
+        run: uv run python -m lfm.jobs.light ${{ inputs.skip_if_recent && '--skip-if-recent' || '' }}
+      - name: Collect daily
+        if: steps.budget.outputs.collect == 'true' && inputs.job == 'daily'
+        run: uv run python -m lfm.jobs.daily ${{ inputs.skip_if_recent && '--skip-if-recent' || '' }}

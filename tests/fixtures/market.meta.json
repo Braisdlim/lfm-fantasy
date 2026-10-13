@@ -1,0 +1,8 @@
+{
+  "source": "laliga_api",
+  "endpoint": "/v1/competition/1/league/90000001/market",
+  "captured_at": "2026-09-08T15:29:28+00:00",
+  "total_items": 29,
+  "anonymized": true,
+  "note": "Muestra real anonimizada con lfm.fixtures. Regenerar: python -m lfm.jobs.daily --dry-run --save-fixture"
+}

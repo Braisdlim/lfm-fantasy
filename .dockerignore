@@ -1,0 +1,11 @@
+.git
+**/.env
+**/.env.*
+**/.tokens.json
+**/node_modules
+**/.svelte-kit
+**/.venv
+**/__pycache__
+**/.raw
+**/.cache
+docs/screenshots

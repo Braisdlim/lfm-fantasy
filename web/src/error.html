@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0a0d12" />
+		<title>lfm · Servicio no disponible</title>
+		<style>
+			:root { color-scheme: dark; background: #0a0d12; color: #eaf0f6; font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif; }
+			body { margin: 0; }
+			main { max-width: 36rem; margin: 0 auto; padding: clamp(2rem, 10vh, 6rem) 1.5rem; }
+			h1 { margin: 0 0 1rem; font-size: clamp(1.75rem, 5vw, 2.25rem); line-height: 1.2; text-wrap: balance; }
+			p { margin: 1rem 0; line-height: 1.6; overflow-wrap: anywhere; }
+			.help { color: #94a0ae; }
+			.service-help { display: none; }
+			[data-status="503"] .service-help { display: block; }
+			.actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+			a { color: #38bdf8; text-underline-offset: .2em; }
+			.actions a { display: inline-flex; align-items: center; min-height: 44px; padding: .25rem 1rem; border: 1px solid #1c2530; border-radius: .5rem; font-weight: 600; }
+			.actions a:first-child { background: #38bdf8; color: #0a0d12; border-color: #38bdf8; text-decoration: none; }
+			.actions a:hover { border-color: #38bdf8; }
+			a:focus-visible { outline: 2px solid #38bdf8; outline-offset: 4px; }
+			::selection { background: #38bdf8; color: #0a0d12; }
+		</style>
+	</head>
+	<body data-status="%sveltekit.status%">
+		<main>
+			<h1>No se pudo abrir la app</h1>
+			<p>%sveltekit.error.message%</p>
+			<div class="service-help help">
+				<p>Recargar la página no desbloquea una cuota agotada. Revisa el proyecto lfm en <a href="https://console.neon.tech" target="_blank" rel="noopener noreferrer">el panel de Neon</a> para recuperar el servicio.</p>
+				<p>Las actualizaciones también están detenidas. Cuando Neon vuelva a aceptar conexiones, podrás consultar los datos de nuevo.</p>
+			</div>
+			<div class="actions">
+				<a href="">Comprobar de nuevo</a>
+				<a href="/login">Ir al acceso</a>
+			</div>
+		</main>
+	</body>
+</html>

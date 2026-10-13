@@ -1,0 +1,39 @@
+.env
+.env.local
+.tokens.json
+.raw/
+.neon
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.cache/
+dist/
+web/node_modules/
+web/.svelte-kit/
+web/.vercel/
+*.mitm
+web/.env
+web/.vercel/
+web/build/
+
+.vercel
+.env.local
+
+# Cloudflare Worker
+trigger/node_modules/
+trigger/.wrangler/
+
+# Tableros del diseno copiados por web/static/_design/sync.py: sirven para medir las
+# pantallas a 375 px en local, no para desplegarlos.
+web/static/_design/
+docs/push.log
+docs/diag_tmp.*
+
+neon-usage.json
+lfm-backup.zip
+**/.env.*
+!**/.env.example
+web/playwright-report/
+web/test-results/

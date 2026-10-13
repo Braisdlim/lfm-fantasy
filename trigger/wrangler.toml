@@ -1,0 +1,29 @@
+name = "lfm-trigger"
+main = "src/index.js"
+compatibility_date = "2026-09-09"
+
+# Con URL pública en workers.dev, que solo sirve para comprobarlo a mano: `/health` no lleva clave
+# y no dispara nada, y el disparo manual exige TRIGGER_KEY. Lo que trabaja de verdad es el cron.
+workers_dev = true
+
+# El mercado rota a las 19:21 de Madrid: 17:21 UTC en verano y 18:21 en invierno. Cloudflare solo
+# programa en UTC, así que se dispara en las cuatro horas candidatas y el Worker decide mirando la
+# hora local cuáles son de verdad la ventana (src/schedule.js). Sale más barato que mantener dos
+# crones estacionales y no hay que acordarse de cambiarlo en octubre y en marzo.
+#
+#   verano   17:05 -> light   17:25 -> daily   (18:05 y 18:25 no hacen nada)
+#   invierno 18:05 -> light   18:25 -> daily   (17:05 y 17:25 no hacen nada)
+[triggers]
+# Dos despertares por hora durante el dia: el de :05 hace la pasada ligera de esa hora y el de
+# :25 solo importa en la ventana posterior al cierre del mercado. `jobFor` decide cual toca.
+# 23 UTC incluido: es la 01:25 de Madrid en verano y las 00:25 en invierno, cuando llegan los valores.
+crons = ["5,25 5-23 * * *"]
+
+[vars]
+REPO = "YOUR_USERNAME/lfm-fantasy"
+BRANCH = "main"
+WORKFLOW = "collect.yml"
+
+# Secretos, que NO van aquí (se ponen con `wrangler secret put`):
+#   GITHUB_TOKEN  token de acceso personal de alcance fino: solo este repo, permiso Actions:write
+#   TRIGGER_KEY   clave propia para poder disparar a mano desde la URL del Worker

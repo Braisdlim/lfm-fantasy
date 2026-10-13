@@ -1,0 +1,222 @@
+[
+  {
+    "discr": "marketPlayerLeague",
+    "playerMaster": {
+      "images": {
+        "transparent": {
+          "256x256": "https://assets.example.invalid/1/image.png"
+        }
+      },
+      "id": "2986",
+      "teamId": 26,
+      "name": "Jugador 002",
+      "nickname": "J002",
+      "slug": "jugador-002",
+      "positionId": 5,
+      "position": "Entrenador",
+      "marketValue": 883126,
+      "playerStatus": "ok",
+      "points": 14,
+      "averagePoints": 3.5
+    },
+    "id": "167740656",
+    "salePrice": 902215,
+    "expirationDate": "2026-09-08T19:21:00+02:00",
+    "status": "on_sale",
+    "leagueType": "private",
+    "leagueId": 90000012,
+    "numberOfBids": 0
+  },
+  {
+    "discr": "marketPlayerLeague",
+    "playerMaster": {
+      "images": {
+        "transparent": {
+          "256x256": "https://assets.example.invalid/2/image.png"
+        }
+      },
+      "id": "2601",
+      "teamId": 7,
+      "name": "Jugador 004",
+      "lastSeasonPoints": 125,
+      "nickname": "J004",
+      "slug": "jugador-004",
+      "positionId": 3,
+      "position": "Centrocampista",
+      "marketValue": 1230039,
+      "playerStatus": "ok",
+      "points": 5,
+      "averagePoints": 1.25
+    },
+    "id": "167740660",
+    "salePrice": 1263582,
+    "expirationDate": "2026-09-08T19:21:00+02:00",
+    "status": "on_sale",
+    "leagueType": "private",
+    "leagueId": 90000012,
+    "numberOfBids": 0
+  },
+  {
+    "discr": "marketPlayerLeague",
+    "playerMaster": {
+      "images": {
+        "transparent": {
+          "256x256": "https://assets.example.invalid/3/image.png"
+        }
+      },
+      "id": "2666",
+      "teamId": 11,
+      "name": "Jugador 006",
+      "lastSeasonPoints": 14,
+      "nickname": "J006",
+      "slug": "jugador-006",
+      "positionId": 1,
+      "position": "Portero",
+      "marketValue": 671168,
+      "playerStatus": "ok",
+      "points": 0,
+      "averagePoints": 0
+    },
+    "id": "167740664",
+    "salePrice": 681425,
+    "expirationDate": "2026-09-08T19:21:00+02:00",
+    "status": "on_sale",
+    "leagueType": "private",
+    "leagueId": 90000012,
+    "numberOfBids": 0
+  },
+  {
+    "discr": "marketPlayerLeague",
+    "playerMaster": {
+      "images": {
+        "transparent": {
+          "256x256": "https://assets.example.invalid/4/image.png"
+        }
+      },
+      "id": "3234",
+      "teamId": 49,
+      "name": "Jugador 008",
+      "nickname": "J008",
+      "slug": "jugador-008",
+      "positionId": 3,
+      "position": "Centrocampista",
+      "marketValue": 3647510,
+      "playerStatus": "ok",
+      "points": 1,
+      "averagePoints": 0.5
+    },
+    "id": "167740668",
+    "salePrice": 3752668,
+    "expirationDate": "2026-09-08T19:21:00+02:00",
+    "status": "on_sale",
+    "leagueType": "private",
+    "leagueId": 90000012,
+    "numberOfBids": 0
+  },
+  {
+    "discr": "marketPlayerTeam",
+    "playerMaster": {
+      "images": {
+        "transparent": {
+          "256x256": "https://assets.example.invalid/5/image.png"
+        }
+      },
+      "id": "652",
+      "teamId": 13,
+      "name": "Jugador 010",
+      "lastSeasonPoints": 174,
+      "nickname": "J010",
+      "slug": "jugador-010",
+      "positionId": 3,
+      "position": "Centrocampista",
+      "marketValue": 15298775,
+      "playerStatus": "ok",
+      "points": 18,
+      "averagePoints": 4.5
+    },
+    "playerTeam": {
+      "buyoutClause": 21690408,
+      "playerTeamId": "23583370",
+      "buyoutClauseLockedEndTime": "2026-08-24T19:32:49+02:00",
+      "isShielded": false,
+      "manager": {
+        "id": "90000002",
+        "managerName": "Manager 012",
+        "avatar": "https://assets.example.invalid/6/image.png"
+      }
+    },
+    "id": "8590053",
+    "salePrice": 15599305,
+    "expirationDate": "2026-09-09T13:49:16+02:00",
+    "status": "on_sale",
+    "leagueType": "private",
+    "leagueId": 90000012,
+    "numberOfOffers": 1,
+    "directOffer": false,
+    "sellerTeam": {
+      "teamMoney": null,
+      "id": "90000006",
+      "managerId": 90000002,
+      "teamValue": 304978509,
+      "teamPoints": 238,
+      "manager": {
+        "id": "90000002",
+        "managerName": "Manager 012",
+        "avatar": "https://assets.example.invalid/6/image.png"
+      }
+    }
+  },
+  {
+    "discr": "marketPlayerTeam",
+    "playerMaster": {
+      "images": {
+        "transparent": {
+          "256x256": "https://assets.example.invalid/7/image.png"
+        }
+      },
+      "id": "2771",
+      "teamId": 20,
+      "name": "Jugador 015",
+      "lastSeasonPoints": 207,
+      "nickname": "J015",
+      "slug": "jugador-015",
+      "positionId": 4,
+      "position": "Delantero",
+      "marketValue": 63849387,
+      "playerStatus": "ok",
+      "points": 26,
+      "averagePoints": 6.5
+    },
+    "playerTeam": {
+      "buyoutClause": 66307609,
+      "playerTeamId": "42144555",
+      "buyoutClauseLockedEndTime": "2026-09-05T19:21:20+02:00",
+      "isShielded": false,
+      "manager": {
+        "id": "90000009",
+        "managerName": "Manager 017",
+        "avatar": "https://assets.example.invalid/6/image.png"
+      }
+    },
+    "id": "26797305",
+    "salePrice": 67784308,
+    "expirationDate": "2026-09-08T20:01:58+02:00",
+    "status": "on_sale",
+    "leagueType": "private",
+    "leagueId": 90000012,
+    "numberOfOffers": 1,
+    "directOffer": false,
+    "sellerTeam": {
+      "teamMoney": 3182706,
+      "id": "90000007",
+      "managerId": 90000009,
+      "teamValue": 298446392,
+      "teamPoints": 178,
+      "manager": {
+        "id": "90000009",
+        "managerName": "Manager 017",
+        "avatar": "https://assets.example.invalid/6/image.png"
+      }
+    }
+  }
+]
