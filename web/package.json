@@ -21,7 +21,7 @@
     "@types/node": "^26.5.0",
     "@types/pg": "^8.23.1",
     "playwright": "^1.64.0",
-    "svelte": "^5.30.0",
+    "svelte": "^5.57.2",
     "svelte-check": "^4.2.0",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.0",
