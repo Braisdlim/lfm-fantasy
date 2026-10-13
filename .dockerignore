@@ -9,3 +9,7 @@
 **/.raw
 **/.cache
 docs/screenshots
+reports
+htmlcov
+.coverage*
+coverage.xml

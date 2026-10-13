@@ -2,6 +2,8 @@
 
 Start with [the architecture](docs/architecture.md) and [model contract](docs/criterio.md). Changes should be small enough to explain with a concrete behaviour and relevant evidence.
 
+Create a focused branch and a pull request explaining the problem, resulting behaviour and checks. The [review guide](docs/review.md) provides implementation/test pairs to start with; [decision notes](docs/decisions.md) explain constraints worth preserving. Match the English documentation style when extending public guides; retain domain labels used by the Spanish UI.
+
 - Python: 3.12+, `uv`, Ruff formatting/lint, pytest. Use SQLAlchemy Core and parameterised SQL.
 - Web: TypeScript, Svelte 5, server-only secrets. The backend owns recommendation decisions; the UI explains them.
 - Collectors: capture source evidence before normalising, respect request pacing and 429/backoff. Automated jobs never execute game purchases, sales or lineup changes.

@@ -1,7 +1,7 @@
 # LFM · explainable fantasy football analytics
 
 [![CI](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/ci.yml/badge.svg)](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/ci.yml)
-[Español](README.es.md) · [Architecture](docs/architecture.md) · [Run locally](docs/setup.md) · [Deployment](docs/deployment.md)
+[Español](README.es.md) · [Review in 5 minutes](docs/review.md) · [Run locally](docs/setup.md) · [Architecture](docs/architecture.md)
 
 **A personal full-stack project that turns football data into decisions you can inspect.**
 
@@ -9,9 +9,11 @@ LFM answers three practical questions: which player is worth buying, how much is
 
 This is a curated public edition of an application used privately. The demo uses **real players, clubs, prices, points and fixtures**, captured on **13 October 2026**, in an explicitly labelled **example fantasy league**. Its managers, balances, transfers and asking prices are illustrative. No production database, account or credentials are needed.
 
+**For a technical review:** [follow seven claims into their code and tests](docs/review.md), read the [architecture trade-offs](docs/decisions.md), or inspect the [database optimisation case study](docs/engineering.md). The interface is in Spanish; the technical documentation is in English.
+
 ![LFM home screen: real players and sports data in an example league](docs/screenshots/home.png)
 
-## Try it in one command
+## Try it locally
 
 Install Docker with Compose, then:
 
@@ -99,7 +101,7 @@ src/lfm/
   db/           schema, batched reads, verified caches and backups
   jobs/         daily/light orchestration and budget guards
   notify/       optional Telegram delivery
-    demo.py       isolated real-snapshot / example-league seed
+  demo.py       isolated real-snapshot / example-league seed
 web/            PWA, server queries, planner and charts
 docs/           architecture, setup, operations and screenshots
 ```
@@ -107,7 +109,7 @@ docs/           architecture, setup, operations and screenshots
 ## Testing
 
 ```bash
-uv sync --frozen
+uv sync --locked
 uv run ruff check .
 uv run ruff format --check .
 uv run pytest -q
@@ -120,10 +122,12 @@ npm run build
 
 PostgreSQL-dependent tests run in CI with a disposable service; set `TEST_POSTGRES_URL` locally to run them. **Never point integration tests at production.** On Windows, use `npm.cmd` when PowerShell blocks npm, and `npm run build:local` if the Vercel adapter cannot create symlinks.
 
+Each CI run publishes Python test results and an HTML branch-coverage report. [Verification details](docs/review.md#what-the-checks-establish) explain what the checks establish and their limits. CodeQL analyses Python and JavaScript/TypeScript; dependency alerts and secret push protection are enabled.
+
 ## Scope and honest limitations
 
 This is a **single-owner application**, not a production multi-tenant SaaS. Sharing its password shares the same workspace. Independent users currently need isolated deployments; a shared service needs tenant-aware queries, authorisation and model/cache boundaries. [Adding users](docs/users.md) explains both paths.
 
 Game API access is unofficial and can change. Forecasts are estimates; missing coverage, delayed sources and uncertain rival balances are visible constraints. The demo proves reproducibility and integration, **not predictive accuracy**. Production-specific learned constants remain documented assumptions, not transferable guarantees. Automated jobs never buy, sell or change the game lineup.
 
-The demo proves reproducibility and integration, not the predictive accuracy of a sampled catalogue or example bidding history. The deployed personal instance remains private. This public repository contains no scheduled production collection or production backup artifacts. Third-party libraries retain their licences; no licence is granted here to third-party sports content or trademarks. See [publication scope](docs/publication.md).
+The deployed personal instance remains private. This public repository contains no scheduled production collection or production backup artifacts. It is publicly viewable but has no open-source licence grant. Third-party libraries retain their licences; no licence is granted here to third-party sports content or trademarks. See [publication scope](docs/publication.md), [ownership and AI assistance](docs/review.md#ownership-and-scope), and [deployment](docs/deployment.md).

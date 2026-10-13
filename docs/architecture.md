@@ -1,5 +1,7 @@
 # Architecture
 
+[Decision notes](decisions.md) record the alternatives and consequences behind these boundaries. For an implementation-first tour, use the [review guide](review.md).
+
 ## Boundaries
 
 LFM is a scheduled data pipeline plus a server-rendered PWA. Python owns ingestion and recommendation logic. PostgreSQL stores both source evidence and prepared outputs. SvelteKit owns presentation and a client-side what-if planner; it does not collect game data.
