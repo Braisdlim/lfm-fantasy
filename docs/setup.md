@@ -68,6 +68,8 @@ npm run demo:smoke
 
 The smoke command requires the demo at localhost:5173 and Playwright Chromium (`npx playwright install chromium`). It exercises routes, search, planner and read-only protection and captures the real UI. Without `TEST_POSTGRES_URL`, the separate PostgreSQL integration tests are skipped. CI provides its own disposable PostgreSQL test database.
 
+For a local branch-coverage report, run `uv run pytest --cov --cov-report=html:reports/coverage` and open `reports/coverage/index.html`. Without PostgreSQL, the report excludes the skipped integration paths. CI uploads its full run as the `python-verification` artifact, together with JUnit results; reports are retained for 14 days. `uv run python scripts/check_docs.py` checks tracked documentation's relative links and heading anchors without contacting external sites.
+
 ## Troubleshooting
 
 - **Port already in use:** stop the other local server or change the published Compose port and set `DEMO_URL` for the smoke script.

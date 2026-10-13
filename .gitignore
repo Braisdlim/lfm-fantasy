@@ -37,3 +37,10 @@ lfm-backup.zip
 !**/.env.example
 web/playwright-report/
 web/test-results/
+
+# Local verification reports
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+reports/

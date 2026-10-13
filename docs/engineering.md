@@ -24,6 +24,16 @@ The private application became unavailable after its database provider's monthly
 
 These observations are not load-test percentiles or a fixed monthly cost guarantee. Cold processes, changing histories and additional users can change consumption. Provider metrics remain the billable source of truth.
 
+### Reproduce the public correctness and query-count check
+
+With a disposable `TEST_POSTGRES_URL` configured, run:
+
+```bash
+uv run pytest -q tests/test_journal_batch.py
+```
+
+The [integration test](../tests/test_journal_batch.py) compares the original individual enrichment path with the batched path on controlled PostgreSQL data, including missing players, missing points, mixed price sources and repeated holdings. It requires identical results and exactly six batched reads for both four and 200 holdings; an empty input performs no reads. This checks query growth and correctness, not wall-clock performance or provider-billed bytes. CI runs it against PostgreSQL 17 on every change.
+
 ## Correctness found during optimisation
 
 The UI said “next gameweek” while one calculation included two weeks. The audit corrected the horizon, kept the scoring weights, and added regression coverage. It also moved lineup refresh into the light job and combined official and external availability. Optimising only bytes would have missed this product bug.

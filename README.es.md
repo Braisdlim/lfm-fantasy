@@ -1,8 +1,10 @@
 # LFM · decisiones explicables para fantasy
 
-[English](README.md) · [Arquitectura](docs/architecture.md) · [Arranque](docs/setup.md) · [Usuarios](docs/users.md)
+[English](README.md) · [Revisión en 5 minutos](docs/review.md) · [Arquitectura](docs/architecture.md) · [Arranque](docs/setup.md)
 
 Proyecto personal full stack: una PWA que ayuda a decidir **a quién fichar, cuánto pujar y qué once alinear en la próxima jornada**. Python calcula; PostgreSQL conserva datos y resultados; SvelteKit presenta cifras, motivos y límites.
+
+Para revisar el proyecto, empieza por el [recorrido de código y pruebas](docs/review.md) y las [decisiones de arquitectura](docs/decisions.md). La documentación técnica principal está en inglés; la interfaz conserva el español de la aplicación original.
 
 ![Pantalla de inicio con jugadores reales en una liga de ejemplo](docs/screenshots/home.png)
 
