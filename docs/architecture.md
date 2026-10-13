@@ -27,7 +27,7 @@ sequenceDiagram
 | Responsibility | Entry points | Main tables |
 | --- | --- | --- |
 | HTTP/auth | `api/client.py`, `api/auth.py` | `auth_tokens` in a private instance |
-| Raw provenance | `db/session.py`, `db/raw_payload.py` | `raw_snapshots`, `raw_payload_blobs` |
+| Raw provenance | `db/session.py`, `db/raw_payload.py` | `raw_snapshots`, `raw_html_blobs` |
 | Official collection | `collectors/players.py`, `league.py`, `calendar.py`, `value_history.py` | `players`, `teams`, price/point series, squad, market, activity, matches |
 | External adapters | `sources/futbolfantasy.py`, `lineups.py` | aliases, availability, set pieces, season stats |
 | Price estimation | `analysis/price_models.py`, `drift.py`, `rebound.py`, `trend.py` | verified `analysis_cache` and price series |

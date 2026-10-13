@@ -1,6 +1,6 @@
 # A private live deployment
 
-The public repository is a portfolio/demo, not a shared live sports service. Keep an operational copy private: collector logs, backups and raw captures can contain private league data even when GitHub secrets themselves are protected.
+The public repository is a portfolio/demo, not a shared live sports service. Keep an operational copy private: collector logs, backups and raw captures can contain private league data even when GitHub secrets themselves are protected. The demo uses a dated real public sporting snapshot and an example league.
 
 ## Components
 
