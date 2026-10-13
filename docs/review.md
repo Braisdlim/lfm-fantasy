@@ -1,43 +1,33 @@
-# A five-minute technical review
+# Code and test guide
 
-LFM is a personal tool for deciding which fantasy football players to buy, what to bid and who to field. The interesting engineering problem is turning incomplete, changing data into useful decisions within a small database budget.
+Start with one behaviour and follow its implementation into a regression test. The [architecture](architecture.md) gives the wider context; the [screenshots](walkthrough.md) show the resulting product.
 
-**Start without credentials:** follow the [Docker quickstart](../README.md#try-it-locally), or browse the [six actual screenshots](walkthrough.md). The UI is in Spanish; this guide and the architecture documentation are in English. The bundled sports data is real and dated; the league is illustrative.
+## 1. Database efficiency without changing the result
 
-## Pick a path
+Read [`enrich_many` in the journal](../src/lfm/analysis/journal.py) and its [PostgreSQL test](../tests/test_journal_batch.py). The test compares batch enrichment with the individual path, including missing players, missing points, mixed price sources and repeated holdings. Four and 200 holdings both require six batched reads; empty input performs none.
 
-| Time | Read | What to look for |
-| --- | --- | --- |
-| 1 minute | [Product walkthrough](walkthrough.md) | Recommendations, lineup and transfer simulation; visible uncertainty |
-| 3 minutes | [Architecture](architecture.md) and [decisions](decisions.md) | Transaction boundaries, prepared results, cache scope and alternatives |
-| 5 minutes | One implementation/test pair below | A concrete behaviour and a regression test you can run |
-| Deeper review | [Quota incident](engineering.md) and [model contract](criterio.md) | What was measured, what was corrected and what remains unproven |
+The [incident case study](engineering.md) separates this reproducible check from timings observed on one private snapshot. For cache correctness, [price-cache tests](../tests/test_price_cache.py) cover corrections, deletions, concurrent changes and corrupt files.
 
-## Follow a claim into the code
+## 2. Domain constraints and incomplete data
 
-| Claim | Implementation | Executable evidence |
-| --- | --- | --- |
-| Journal enrichment avoids per-holding query growth | [`enrich_many`](../src/lfm/analysis/journal.py), [batched reads](../src/lfm/db/batch_reads.py) | [PostgreSQL regression](../tests/test_journal_batch.py): equal output to the individual path, six reads for both 4 and 200 holdings |
-| Cache reuse requires checking the actual source history | [Price cache](../src/lfm/db/price_cache.py) | [Cache tests](../tests/test_price_cache.py): corrections, deletions, concurrent changes and corrupt files |
-| An unavailable player cannot enter the suggested eleven | [Lineup selection](../src/lfm/analysis/eleven.py) | [Lineup tests](../tests/test_eleven.py): legal formations, injuries, suspensions and infeasible squads |
-| “Next gameweek” means one gameweek | [Expected points](../src/lfm/analysis/points.py) | [Horizon regression](../tests/test_fixtures_points.py): a second fixture cannot inflate the next-gameweek estimate |
-| Failed analysis does not discard a newly collected market | [Light job](../src/lfm/jobs/light.py) | [Orchestration tests](../tests/test_light.py): failures recorded while collection and other analysis survive |
-| Concurrent identical page reads share work | [Query cache](../web/src/lib/server/query-cache.ts) | [Web tests](../web/tests/query-cache.test.ts): coalescing, expiry, retry and stale-response invalidation |
-| The public demo has an explicit data boundary | [Seed](../src/lfm/demo.py), [request hook](../web/src/hooks.server.ts) | [Python policy](../tests/test_demo.py), [web policy](../web/tests/demo-policy.test.ts), [browser smoke](../web/scripts/demo-smoke.mjs) |
-| Private sessions require an independent signing key and server-side expiry | [Session policy](../web/src/lib/server/auth.ts) | [Tampering/expiry tests](../web/tests/auth.test.ts), [HTTP login smoke](../web/scripts/auth-smoke.mjs) |
+Read [lineup selection](../src/lfm/analysis/eleven.py) with its [tests](../tests/test_eleven.py): legal formations, injured players, missing goalkeepers and infeasible squads. The [points regression](../tests/test_fixtures_points.py) prevents a second future fixture inflating a next-gameweek estimate.
 
-For a small first check, run `uv sync --locked` then `uv run pytest -q tests/test_eleven.py tests/test_fixtures_points.py`. These tests do not need a database or sports credentials. PostgreSQL tests require a separate disposable test database; see [setup](setup.md#tests).
+These are rules and correctness checks. [The model contract](criterio.md) explains statistical assumptions and the evaluation still needed to establish predictive performance.
 
-## What the checks establish
+## 3. Failure boundaries
 
-[CI](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/ci.yml) runs the Python suite against disposable PostgreSQL, TypeScript/trigger tests, Svelte diagnostics, a production build, secret scanning and the Compose browser smoke. The Python job publishes a JUnit report and an HTML branch-coverage report for 14 days. Coverage identifies unexercised code; it does not establish forecast accuracy. Browse the report rather than interpreting a green badge as complete test coverage.
+Read the [light job](../src/lfm/jobs/light.py) with its [orchestration tests](../tests/test_light.py). Collection survives a failed analysis step. In the web, [query-cache tests](../web/tests/query-cache.test.ts) cover concurrent requests, retry and invalidation while an old request is still in flight.
 
-[CodeQL](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/codeql.yml) analyses Python and JavaScript/TypeScript. Static scanning complements the tests and is not a security certification.
+For an example of a security fix, [PR #5](https://github.com/Braisdlim/lfm-fantasy/pull/5) replaces password-derived cookies with independently signed, expiring sessions. [Unit tests](../web/tests/auth.test.ts) and an [HTTP login smoke test](../web/scripts/auth-smoke.mjs) verify the boundary.
 
-The journal regression is reproducible in public CI. The timings in the incident case study came from one private snapshot and cannot be reproduced exactly from the different demo dataset. There is no published production-scale load test or out-of-sample forecast-accuracy claim.
+## Run and inspect
 
-## Ownership and scope
+The [local demo](../README.md#try-it-locally) requires no credentials. [Test instructions](setup.md#tests) cover both database-free checks and disposable PostgreSQL integration tests.
 
-This is Brais's personal project, with AI-assisted implementation, investigation and documentation. The public edition has a fresh, curated history so private operational data is not exposed. It is not a record of team delivery or a claim that every line was written unaided. The implementation, tests and stated limitations are available for review.
+[CI](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/ci.yml) checks Python/SQL, web types and build, scheduler logic, authentication and the 13-route Compose demo. The `python-verification` artifact contains JUnit results and HTML branch coverage, retained for 14 days. [CodeQL](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/codeql.yml) provides static security analysis. These checks establish specific behaviours; coverage and passing scans are not evidence of forecast accuracy or the absence of all defects.
 
-The application currently serves one owner. Independent accounts, tenant isolation and model evaluation on held-out future results are [future work](decisions.md#what-would-change-next). Public visibility does not grant an open-source licence; see [publication terms and data provenance](publication.md).
+## Project context
+
+Brais's personal project, developed with AI assistance for implementation, investigation and documentation. The public edition has a curated Git history to keep private operational data out of the repository. Current scope and future design constraints are recorded in [decision notes](decisions.md).
+
+Operational details are secondary references: [hosting and configuration](deployment.md), [ownership boundary](users.md), [data provenance and rights](publication.md), and [security](../SECURITY.md).

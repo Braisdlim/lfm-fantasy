@@ -1,6 +1,6 @@
-# A private live deployment
+# Hosting and operational configuration
 
-The public repository is a portfolio/demo, not a shared live sports service. Keep an operational copy private: collector logs, backups and raw captures can contain private league data even when GitHub secrets themselves are protected. The demo uses a dated real public sporting snapshot and an example league.
+This reference explains the hosting pattern behind the private application. Reviewing the project only requires the [local demo](setup.md). The configuration below is intended for maintainers; an end-to-end installation with an unrelated user's account has not been validated. Keep operational copies private because collector logs, backups and raw captures can contain private league data.
 
 ## Components
 

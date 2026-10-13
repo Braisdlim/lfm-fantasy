@@ -12,6 +12,6 @@ Create a focused branch and a pull request explaining the problem, resulting beh
 - Predictive changes require forward evaluation against simple baselines. Demo results do not prove predictive quality.
 - Do not commit `.env`, tokens, real private fixtures, database archives or private screenshots.
 
-Run the README checks and `npm run demo:smoke` for demo/UI changes. CI exercises Python/SQL, web build/types, the trigger logic and the local demo. Public collection is deliberately disabled. Review the exact fields and source rights before replacing the real sporting snapshot; retain dates and do not export private league tables.
+Run the [relevant checks](docs/setup.md#tests) and `npm run demo:smoke` for demo/UI changes. CI exercises Python/SQL, web build/types, the trigger logic and the local demo. Public collection is deliberately disabled. Review the exact fields and source rights before replacing the real sporting snapshot; retain dates and do not export private league tables.
 
 Issue reports should include reproduction steps and expected/observed behaviour with a synthetic example. Remove credentials, league identifiers and personal data from logs before attaching them.
