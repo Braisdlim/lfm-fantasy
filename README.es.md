@@ -1,16 +1,28 @@
 # LFM · decisiones explicables para fantasy
 
-[English](README.md) · [Revisión en 5 minutos](docs/review.md) · [Arquitectura](docs/architecture.md) · [Arranque](docs/setup.md)
+[English](README.md) · [Código y pruebas](docs/review.md) · [Arquitectura](docs/architecture.md) · [Capturas](docs/walkthrough.md)
 
-Proyecto personal full stack: una PWA que ayuda a decidir **a quién fichar, cuánto pujar y qué once alinear en la próxima jornada**. Python calcula; PostgreSQL conserva datos y resultados; SvelteKit presenta cifras, motivos y límites.
+**Proyecto personal full stack para decidir a quién fichar, cuánto pujar y qué once alinear en LaLiga Fantasy.**
 
-Para revisar el proyecto, empieza por el [recorrido de código y pruebas](docs/review.md) y las [decisiones de arquitectura](docs/decisions.md). La documentación técnica principal está en inglés; la interfaz conserva el español de la aplicación original.
+Python recoge y analiza datos; PostgreSQL conserva evidencia y resultados; SvelteKit presenta recomendaciones con motivos numéricos, restricciones de saldo e incertidumbre.
 
-![Pantalla de inicio con jugadores reales en una liga de ejemplo](docs/screenshots/home.png)
+**Python · PostgreSQL · SvelteKit · TypeScript · Docker · GitHub Actions**
 
-## Probarlo
+## Tres problemas de ingeniería
 
-Necesitas Docker y Compose. No necesitas cuenta de LaLiga, Neon ni claves:
+| Problema | Solución | Evidencia |
+| --- | --- | --- |
+| Las lecturas históricas repetidas agotaron la cuota de transferencia | Consultas por lotes y cachés verificadas contra cambios de origen | [Caso de ingeniería](docs/engineering.md); [prueba PostgreSQL](tests/test_journal_batch.py) con resultados equivalentes y seis lecturas tanto para 4 como para 200 operaciones |
+| El once debe respetar bajas y reglas del juego | Comparación de siete formaciones para la próxima jornada, conservando la incertidumbre | [Código](src/lfm/analysis/eleven.py), [pruebas de formaciones](tests/test_eleven.py) y [horizonte de una jornada](tests/test_fixtures_points.py) |
+| Un cálculo fallido no debe borrar datos recién recogidos | Transacciones separadas y aislamiento de pasos de análisis | [Orquestación](src/lfm/jobs/light.py) y [pruebas de fallos](tests/test_light.py) |
+
+![Once sugerido calculado con datos deportivos reales en una liga de ejemplo](docs/screenshots/eleven.png)
+
+[Ver recomendaciones, históricos y simulador de fichajes →](docs/walkthrough.md)
+
+## Probar la demo
+
+Con Docker y Compose instalados:
 
 ```bash
 git clone https://github.com/Braisdlim/lfm-fantasy.git
@@ -18,30 +30,15 @@ cd lfm-fantasy
 docker compose up --build
 ```
 
-Abre **http://localhost:5173**. La demo usa una muestra real del **13/10/2026**: **64 jugadores, 20 clubes, 5.107 precios históricos, 486 registros de puntos por jornada y 130 partidos**. Muestra estrellas y jugadores que destacan por puntos respecto a su valor. Tres equipos de ejemplo permiten probar el backend y simular fichajes.
+Abre **http://localhost:5173**. Utiliza datos deportivos reales del **13/10/2026** y una liga de ejemplo. No necesita cuentas ni claves. Permite explorar y simular fichajes; los cambios de la web no se guardan. [Arranque y solución de problemas](docs/setup.md).
 
-Jugadores, clubes, precios, puntos y calendario son reales. Mánagers, saldos, pujas, cláusulas y operaciones pertenecen a una liga de ejemplo. La fecha y las fuentes se indican en la interfaz y la documentación. No guarda cambios desde la web; las fotos y escudos usan las URLs públicas originales. La demo funciona sin consultas a Neon ni a las APIs deportivas.
+## Revisar por dentro
 
-## Qué enseña técnicamente
+- [Arquitectura](docs/architecture.md): flujo de datos, módulos y responsabilidades.
+- [Decisiones](docs/decisions.md): alternativas consideradas y sus costes.
+- [Código y pruebas](docs/review.md): ejemplos concretos y qué verifica cada comprobación.
+- [CI](https://github.com/Braisdlim/lfm-fantasy/actions/workflows/ci.yml): PostgreSQL, web, compilación, acceso, demo y cobertura; CodeQL y escaneo de secretos complementan las pruebas.
 
-- Recogida de datos con captura cruda previa a la normalización, contratos y reintentos.
-- Recomendaciones deterministas con `reasons[]`, cifras, fuentes y supuestos.
-- Optimización del once entre siete formaciones, con bajas y horizonte de una jornada.
-- Simulación de varias compras y ventas con saldo y once resultantes.
-- Consultas SQL por lotes, caché verificada, peticiones concurrentes agrupadas y protección ante cuota agotada.
-- Pruebas unitarias, contratos de adaptadores, integración con PostgreSQL y verificación de la demo en CI.
+El alcance actual es de un propietario. Los pronósticos son estimaciones y la demo no demuestra precisión predictiva. La documentación técnica está en inglés; la interfaz conserva el español. El desarrollo ha utilizado asistencia de IA para implementación, investigación y documentación.
 
-## Leer el proyecto por dentro
-
-| Documento | Qué explica |
-| --- | --- |
-| [Arquitectura](docs/architecture.md) | Flujo completo, módulos, tablas y responsabilidades |
-| [Backend y modelos](docs/criterio.md) | Cómo decide, qué mide y qué sigue siendo un supuesto |
-| [Despliegue](docs/deployment.md) | Python/Actions, PostgreSQL/Neon, web/Vercel y secretos |
-| [Nuevos usuarios](docs/users.md) | Instancias aisladas hoy y cambios necesarios para un servicio compartido |
-| [Caso de ingeniería](docs/engineering.md) | Incidencia de cuota, diagnóstico y optimizaciones comprobadas |
-| [Recorrido con capturas](docs/walkthrough.md) | Inicio, mercado, plantilla, jugador y simulador |
-
-La edición pública parte de una aplicación utilizada en privado. Tiene una historia Git nueva y no incluye las notas de la liga, credenciales ni capturas privadas. Las capturas muestran la demo funcionando con datos deportivos reales fechados.
-
-El alcance es de **un único propietario**. No existe todavía registro de usuarios ni aislamiento multiusuario. Los pronósticos no garantizan resultados deportivos y la demo con liga de ejemplo no sirve como validación predictiva. Estas limitaciones también se documentan: forman parte del proyecto que se puede explicar en una entrevista.
+La instancia operativa permanece privada. [Procedencia de datos y condiciones de publicación](docs/publication.md); el repositorio no tiene actualmente una licencia de código abierto.
