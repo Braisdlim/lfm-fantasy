@@ -72,6 +72,7 @@ jobs:
       - run: npm test
       - run: npm run check
       - run: npm run build
+      - run: npm run auth:smoke
   trigger:
     runs-on: ubuntu-24.04
     defaults:

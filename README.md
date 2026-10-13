@@ -9,7 +9,7 @@ LFM answers three practical questions: which player is worth buying, how much is
 
 This is a curated public edition of an application used privately. The demo uses **real players, clubs, prices, points and fixtures**, captured on **13 October 2026**, in an explicitly labelled **example fantasy league**. Its managers, balances, transfers and asking prices are illustrative. No production database, account or credentials are needed.
 
-**For a technical review:** [follow seven claims into their code and tests](docs/review.md), read the [architecture trade-offs](docs/decisions.md), or inspect the [database optimisation case study](docs/engineering.md). The interface is in Spanish; the technical documentation is in English.
+**For a technical review:** [follow engineering claims into their code and tests](docs/review.md), read the [architecture trade-offs](docs/decisions.md), or inspect the [database optimisation case study](docs/engineering.md). The interface is in Spanish; the technical documentation is in English.
 
 ![LFM home screen: real players and sports data in an example league](docs/screenshots/home.png)
 

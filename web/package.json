@@ -10,7 +10,8 @@
     "build:local": "node scripts/build-local.mjs",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "demo:smoke": "node scripts/demo-smoke.mjs"
+    "demo:smoke": "node scripts/demo-smoke.mjs",
+    "auth:smoke": "node scripts/auth-smoke.mjs"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^6.0.0",

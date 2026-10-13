@@ -20,7 +20,9 @@ The public repository is a portfolio/demo, not a shared live sports service. Kee
 4. Run `uv run python -m lfm.db.migrate` against that new database. Back up first when applying migrations to an existing instance.
 5. Authenticate your own game account with `uv run python -m lfm.api.auth login` or `login-google`. The latter uses an interactive PKCE flow. Keep `.tokens.json` private. `whoami` verifies access; set the actual `LEAGUE_ID`.
 6. Run one daily collection and inspect `job_runs.summary`, coverage and source timestamps. A top-level `ok` does not prove every optional analysis step succeeded.
-7. Deploy `web/` to Vercel with `DATABASE_URL` and a strong `APP_PASSWORD`. Leave `DEMO_MODE` and `DATABASE_TRANSPORT` unset: the live web uses Neon HTTP. Production without a password fails closed in this public edition.
+7. Deploy `web/` to Vercel with `DATABASE_URL`, a strong `APP_PASSWORD` and an independent `AUTH_SECRET` (32 random bytes encoded as 64 hex characters). Leave `DEMO_MODE` and `DATABASE_TRANSPORT` unset: the live web uses Neon HTTP. Production with missing or invalid authentication configuration fails closed in this public edition.
+
+Generate `AUTH_SECRET` locally with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"` and place its output only in the deployment secret store. Do not reuse the password as this key. Sessions expire server-side after 30 days. Rotate `AUTH_SECRET` when changing the password to revoke every existing session; password rotation alone does not revoke already signed sessions. Upgrading from the original deterministic cookie requires setting this new secret and signing in again. The public demo does not require it.
 
 API access is unofficial. Source endpoints and authentication can change; verify your account's access and applicable provider rules. This repository is not affiliated with LaLiga or its data sources.
 
@@ -32,6 +34,7 @@ API access is unofficial. Source endpoints and authentication can change; verify
 | `LALIGA_REFRESH_TOKEN` | private job secret | Bootstraps the collector; rotated tokens can be stored in `auth_tokens` |
 | `LEAGUE_ID` | private job configuration | Selects that owner's league |
 | `APP_PASSWORD` | private web secret | One shared workspace, not separate accounts |
+| `AUTH_SECRET` | private web secret | Independent 32-byte random signing key in hex; rotate to revoke all sessions |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | optional private job secrets | Without them notifications are printed locally |
 | `APP_URL` | optional private job variable | Your deployed web URL for alert links; blank means no links |
 | `PRICE_CACHE_DIR` | job configuration | Optional validated disk copy; avoid caching credentials/raw league captures |
